@@ -63,8 +63,8 @@ class TimeSheetManager {
             workedMinutes += 24 * 60;
         }
         
-        // Deduct break time
-        const netMinutes = workedMinutes - BREAK_DEDUCTION_MINUTES;
+        // Deduct break time only if work day exceeds 4 hours (240 minutes)
+        const netMinutes = workedMinutes > 240 ? workedMinutes - BREAK_DEDUCTION_MINUTES : workedMinutes;
         const hoursDecimal = netMinutes / 60;
         
         return hoursDecimal.toFixed(2);
