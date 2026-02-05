@@ -126,6 +126,27 @@ function submitTimesheet() {
         return;
     }
     
+    // Check for invalid time ranges
+    let hasInvalidRanges = false;
+    days.forEach(day => {
+        const startInput = document.getElementById(`${day}-start`);
+        const endInput = document.getElementById(`${day}-end`);
+        
+        if (startInput.value && endInput.value) {
+            const start = parseTime(startInput.value);
+            const end = parseTime(endInput.value);
+            
+            if (end <= start) {
+                hasInvalidRanges = true;
+            }
+        }
+    });
+    
+    if (hasInvalidRanges) {
+        alert('Please fix invalid time ranges (end time must be after start time) before submitting.');
+        return;
+    }
+    
     // Collect timesheet data
     const timesheetData = {};
     days.forEach(day => {
