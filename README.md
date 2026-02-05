@@ -19,12 +19,13 @@ A simple weekly time sheet calculator that allows employees to submit their hour
    - Deducts 30 minutes lunch time for workdays (Mon-Fri)
    - Displays total net hours for the week
 4. Click "Submit Timesheet" to finalize your entries
-5. Use "Clear All" to reset the form
+5. "Submit Timesheet" sends form to email address "angelarer@yahoo.com", "maricelarer@yahoo.com"
+6. Use "Clear All" to reset the form
 
 ## How It Works
 
-- **Workdays** (Monday-Friday): 30 minutes automatically deducted for lunch
-- **Weekends** (Saturday-Sunday): No lunch deduction applied
+- **Workdays** (Monday-Saturday): 30 minutes automatically deducted for lunch
+- **Weekends** (Sunday): No Hour added or lunch deduction applied
 - **Real-time Updates**: Hours are calculated as you type
 - **Validation**: Ensures end time is after start time
 
