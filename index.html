@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Time Sheet Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weekly Time Sheet Calculator</h1>
+        <p class="subtitle">Enter your daily hours - 30 minutes lunch deducted automatically per workday</p>
+        
+        <div class="timesheet">
+            <div class="day-entry">
+                <label for="monday">Monday</label>
+                <div class="time-inputs">
+                    <input type="time" id="monday-start" class="time-input">
+                    <span>to</span>
+                    <input type="time" id="monday-end" class="time-input">
+                    <span class="hours-display" id="monday-hours">0.00 hrs</span>
+                </div>
+            </div>
+
+            <div class="day-entry">
+                <label for="tuesday">Tuesday</label>
+                <div class="time-inputs">
+                    <input type="time" id="tuesday-start" class="time-input">
+                    <span>to</span>
+                    <input type="time" id="tuesday-end" class="time-input">
+                    <span class="hours-display" id="tuesday-hours">0.00 hrs</span>
+                </div>
+            </div>
+
+            <div class="day-entry">
+                <label for="wednesday">Wednesday</label>
+                <div class="time-inputs">
+                    <input type="time" id="wednesday-start" class="time-input">
+                    <span>to</span>
+                    <input type="time" id="wednesday-end" class="time-input">
+                    <span class="hours-display" id="wednesday-hours">0.00 hrs</span>
+                </div>
+            </div>
+
+            <div class="day-entry">
+                <label for="thursday">Thursday</label>
+                <div class="time-inputs">
+                    <input type="time" id="thursday-start" class="time-input">
+                    <span>to</span>
+                    <input type="time" id="thursday-end" class="time-input">
+                    <span class="hours-display" id="thursday-hours">0.00 hrs</span>
+                </div>
+            </div>
+
+            <div class="day-entry">
+                <label for="friday">Friday</label>
+                <div class="time-inputs">
+                    <input type="time" id="friday-start" class="time-input">
+                    <span>to</span>
+                    <input type="time" id="friday-end" class="time-input">
+                    <span class="hours-display" id="friday-hours">0.00 hrs</span>
+                </div>
+            </div>
+
+            <div class="day-entry">
+                <label for="saturday">Saturday</label>
+                <div class="time-inputs">
+                    <input type="time" id="saturday-start" class="time-input">
+                    <span>to</span>
+                    <input type="time" id="saturday-end" class="time-input">
+                    <span class="hours-display" id="saturday-hours">0.00 hrs</span>
+                </div>
+            </div>
+
+            <div class="day-entry">
+                <label for="sunday">Sunday</label>
+                <div class="time-inputs">
+                    <input type="time" id="sunday-start" class="time-input">
+                    <span>to</span>
+                    <input type="time" id="sunday-end" class="time-input">
+                    <span class="hours-display" id="sunday-hours">0.00 hrs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <div class="summary-row">
+                <span>Total Hours Worked:</span>
+                <span id="total-gross" class="value">0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Lunch Deductions (30 min/workday):</span>
+                <span id="lunch-deduction" class="value">0.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Net Hours:</span>
+                <span id="total-net" class="value">0.00</span>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button onclick="clearTimesheet()" class="btn btn-secondary">Clear All</button>
+            <button onclick="submitTimesheet()" class="btn btn-primary">Submit Timesheet</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
