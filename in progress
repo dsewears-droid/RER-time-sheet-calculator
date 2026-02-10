@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<center>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RER Time Sheet Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <div class="container">
+        
+            <h1>RER Weekly Time Sheet</h1>
+        
+        
+        <section class="entry-form">
+            <h2>Grading</h2>
+            
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="weekDay">Day:</label>
+                        <input type="text" id="weekDay" readonly>
+                    </div> <div class="form-field">
+                        <label for="workDate">Date:</label>
+                        <input type="date" id="workDate" required>
+                    </div>
+                    
+                   
+                    
+                    <div class="form-field">
+                        <label for="clockIn">Start Time:</label>
+                        <input type="time" id="clockIn" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="clockOut">End Time:</label>
+                        <input type="time" id="clockOut" required>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                        <label for="location">Job Site:</label>
+                        <input type="text" id="location" required>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                        <label for="workDescription">Scope of Work:</label>
+                        <select id="workDescription" required>
+                            <option value="">Select scope of work...</option>
+                            <option value="Grading">Grading</option>
+                            <option value="Excavation">Excavation</option>
+                            <option value="R&R">R&R</option>
+                            <option value="Demolition-Machine">Demolition-Machine</option>
+                            <option value="Demolition-ReUse">Demolition-ReUse</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="calculate" class="btn-primary">Calculate Hours</button>
+            
+        </section>
+        
+        <section class="records-section">
+            
+            <div id="weeklyDisplay"></div>
+            <table id="recordsTable">
+                                <tbody id="recordsBody">
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+    <script src="app.js"></script>
+
+<script>
+```javascript
+updateDayOfWeek(dateString) {
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const selectedDate = new Date(dateString + 'T00:00:00');
+    const dayIndex = selectedDate.getDay();
+    document.getElementById('weekDay').value = dayNames[dayIndex];
+}
+
+</script>
+<script>
+
+
+
+function updateDayOfWeek(dateString) {
+
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    const selectedDate = new Date(dateString + 'T00:00:00');
+
+    const dayIndex = selectedDate.getDay();
+
+    document.getElementById('weekDay').value = dayNames[dayIndex];
+
+}
+
+
+
+// Run when the user changes the date
+
+document.getElementById('workDate').addEventListener('change', function() {
+
+    updateDayOfWeek(this.value);
+
+});
+
+
+
+// Optional: set today’s date and day automatically when page loads
+
+window.onload = function() {
+
+    const today = new Date().toISOString().split('T')[0];
+
+    document.getElementById('workDate').value = today;
+
+    updateDayOfWeek(today);
+
+};
+
+</script>
+</center>
+<script>
+const today = new Date();
+let start_time =
+  ("0" + today.getHours()).slice(-2) +
+  ":" +
+  ("0" + today.getMinutes()).slice(-2);
+let end_time;
+let pausa = 0;
+
+$("#start_time").val(start_time);
+
+$(document).ready(function () {
+  $("#start_time").on("change", () => {
+    start_time = $("#start_time").val();
+    countHours();
+  });
+  $("#end_time").on("change", () => {
+    end_time = $("#end_time").val();
+    countHours();
+  });
+  $("#pausa").on("change", () => {
+    pausa = $("#pausa").val();
+    countHours();
+  });
+});
+
+function countHours() {
+  // start_time to minutes
+  let start_min =
+    Number(start_time.slice(0, 2)) * 60 + Number(start_time.slice(3, 5));
+  let end_min =
+    Number(end_time.slice(0, 2)) * 60 + Number(end_time.slice(3, 5));
+  let hours = (end_min - start_min - Number(pausa)) / 60;
+  let round_hours = Math.floor(hours);
+  let round_minutes = Math.floor((hours - round_hours) * 60);
+  $("#total_time").html(round_hours + "h " + round_minutes + "m");
+}
+</script>
