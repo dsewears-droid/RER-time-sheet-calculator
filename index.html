@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RER Time Sheet Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>RER Weekly Time Sheet</h1>
+        </header>
+        
+        <section class="entry-form">
+            <h2>Log Work Entry</h2>
+            <form id="timeEntryForm">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="workDate">Date:</label>
+                        <input type="date" id="workDate" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="weekDay">Day:</label>
+                        <input type="text" id="weekDay" readonly>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="clockIn">Start Time:</label>
+                        <input type="time" id="clockIn" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="clockOut">End Time:</label>
+                        <input type="time" id="clockOut" required>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                        <label for="location">Job Site:</label>
+                        <input type="text" id="location" required>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                        <label for="workDescription">Scope of Work:</label>
+                        <select id="workDescription" required>
+                            <option value="">Select scope of work...</option>
+                            <option value="Grading">Grading</option>
+                            <option value="Excavation">Excavation</option>
+                            <option value="R&R">R&R</option>
+                            <option value="Demolition-Machine">Demolition-Machine</option>
+                            <option value="Demolition-ReUse">Demolition-ReUse</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Add Entry</button>
+            </form>
+        </section>
+        
+        <section class="records-section">
+            <h2>Time Sheet Records</h2>
+            <div id="weeklyDisplay"></div>
+            <table id="recordsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Job Site</th>
+                        <th>Scope</th>
+                        <th>Hours</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="recordsBody">
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
